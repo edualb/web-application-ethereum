@@ -10,7 +10,7 @@
 
 * Config your MetaMask with ganache blockchain network (127.0.0.1:7545)
 
-* Get some address in your personal ganache blockchain and put in deploy contract file  ( `3_deploy_contract.js` ):
+* Get some address in your personal ganache blockchain and put in deploy contract file  ( [`3_deploy_contract.js`](https://github.com/edualb/web-application-ethereum/blob/master/crowdfunding/migrations/3_deploy_contract.js) ):
 
 ```
     deployer.deploy(
