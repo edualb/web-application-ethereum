@@ -1,0 +1,1329 @@
+{
+  "contractName": "TestCrowdFundingWithDeadline",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "contractName",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "targetAmountEth",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "durationInMin",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "beneficiaryAddress",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "addr",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "totalCollected",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "succeeded",
+          "type": "bool"
+        }
+      ],
+      "name": "CampaignFinnished",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "amounts",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "beforeDeadline",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "beneficiary",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "collect",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "collected",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "contribute",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "finishCrowdFunding",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "fundingDeadline",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "name",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "state",
+      "outputs": [
+        {
+          "internalType": "enum CrowdFundingWithDeadline.State",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "targetAmount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalCollected",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "withdraw",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "newTime",
+          "type": "uint256"
+        }
+      ],
+      "name": "setCurrentTime",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.6.8+commit.0bbfe453\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"contractName\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"targetAmountEth\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"durationInMin\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"beneficiaryAddress\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"totalCollected\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"succeeded\",\"type\":\"bool\"}],\"name\":\"CampaignFinnished\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"amounts\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"beforeDeadline\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"beneficiary\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"collect\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"collected\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"contribute\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"finishCrowdFunding\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"fundingDeadline\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"newTime\",\"type\":\"uint256\"}],\"name\":\"setCurrentTime\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"state\",\"outputs\":[{\"internalType\":\"enum CrowdFundingWithDeadline.State\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"targetAmount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalCollected\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/eduardo/Documentos/Projects/Ethereum/Solidity_course/crowdfunding/contracts/TestCrowdFundingWithDeadline.sol\":\"TestCrowdFundingWithDeadline\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/eduardo/Documentos/Projects/Ethereum/Solidity_course/crowdfunding/contracts/CrowdFundingWithDeadline.sol\":{\"keccak256\":\"0xac538473903e55474991adfaaba11fd2d7bf388b6f2c49921eecef974e6bf076\",\"urls\":[\"bzz-raw://c693500c8beaab27e8ca3db096b5bcb0ee203b47923681cf4ca599da094c4d4d\",\"dweb:/ipfs/QmebX76CLEUpkWJstaQLuvLtTLgpmSQghTaXS6A3gz9C54\"]},\"/home/eduardo/Documentos/Projects/Ethereum/Solidity_course/crowdfunding/contracts/TestCrowdFundingWithDeadline.sol\":{\"keccak256\":\"0xf79a8de8ff76356f93aba44407393a6b9f931dacc68fbb3a0d84b63046cef37b\",\"urls\":[\"bzz-raw://b288c6ed5ab9738fad785b1289099a25f88886e1ec95d8151b1e145091882eec\",\"dweb:/ipfs/QmPiet2g6x9qxMh5HSzjuuPB61AqJXk9tz5FLHCLCqGfnu\"]},\"/home/eduardo/Documentos/Projects/Ethereum/Solidity_course/crowdfunding/contracts/Utils.sol\":{\"keccak256\":\"0xc5100ed630242037ef24b75e0690040e1c121e227422385614dc91b530f9d543\",\"urls\":[\"bzz-raw://3caf2caad1d04443686200b4ac601a23477f4a47ec85068ebd80cc669f6c6487\",\"dweb:/ipfs/Qmadrgq6N5kN22WgoGpjoU2uoxXzjaFwUwGZhaVwzALn27\"]}},\"version\":1}",
+  "bytecode": "0x60806040523480156200001157600080fd5b506040516200104938038062001049833981810160405260808110156200003757600080fd5b81019080805160405193929190846401000000008211156200005857600080fd5b838201915060208201858111156200006f57600080fd5b82518660018202830111640100000000821117156200008d57600080fd5b8083526020830192505050908051906020019080838360005b83811015620000c3578082015181840152602081019050620000a6565b50505050905090810190601f168015620000f15780820380516001836020036101000a031916815260200191505b5060405260200180519060200190929190805190602001909291908051906020019092919050505083838383836000908051906020019062000135929190620002eb565b5073__Utils_________________________________63d8916bb9846040518263ffffffff1660e01b81526004018082815260200191505060206040518083038186803b1580156200018657600080fd5b505af41580156200019b573d6000803e3d6000fd5b505050506040513d6020811015620001b257600080fd5b810190808051906020019092919050505060018190555073__Utils_________________________________63529b380f836040518263ffffffff1660e01b81526004018082815260200191505060206040518083038186803b1580156200021957600080fd5b505af41580156200022e573d6000803e3d6000fd5b505050506040513d60208110156200024557600080fd5b810190808051906020019092919050505062000266620002e160201b60201c565b0160028190555080600360006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000600360146101000a81548160ff02191690836003811115620002ce57fe5b021790555050505050505050506200039a565b6000600754905090565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106200032e57805160ff19168380011785556200035f565b828001600101855582156200035f579182015b828111156200035e57825182559160200191906001019062000341565b5b5090506200036e919062000372565b5090565b6200039791905b808211156200039357600081600090555060010162000379565b5090565b90565b610c9f80620003aa6000396000f3fe6080604052600436106100dd5760003560e01c8063796b23bb1161007f578063c19d93fb11610059578063c19d93fb1461034b578063d7bb99ba14610384578063e29eb8361461038e578063e5225381146103b9576100dd565b8063796b23bb146102c657806384bcefd4146102f1578063953b8fb814610320576100dd565b806338af3eed116100bb57806338af3eed146101c45780633ccfd60b1461021b57806355a3b2c11461023257806368bc004114610297576100dd565b806306fdde03146100e2578063083dca111461017257806322f8e56614610189575b600080fd5b3480156100ee57600080fd5b506100f76103d0565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561013757808201518184015260208101905061011c565b50505050905090810190601f1680156101645780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34801561017e57600080fd5b5061018761046e565b005b34801561019557600080fd5b506101c2600480360360208110156101ac57600080fd5b8101908080359060200190929190505050610655565b005b3480156101d057600080fd5b506101d961065f565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561022757600080fd5b50610230610685565b005b34801561023e57600080fd5b506102816004803603602081101561025557600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506108e1565b6040518082815260200191505060405180910390f35b3480156102a357600080fd5b506102ac6108f9565b604051808215151515815260200191505060405180910390f35b3480156102d257600080fd5b506102db61090c565b6040518082815260200191505060405180910390f35b3480156102fd57600080fd5b50610306610912565b604051808215151515815260200191505060405180910390f35b34801561032c57600080fd5b50610335610925565b6040518082815260200191505060405180910390f35b34801561035757600080fd5b5061036061092b565b6040518082600381111561037057fe5b60ff16815260200191505060405180910390f35b61038c61093e565b005b34801561039a57600080fd5b506103a3610abe565b6040518082815260200191505060405180910390f35b3480156103c557600080fd5b506103ce610ac4565b005b60008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156104665780601f1061043b57610100808354040283529160200191610466565b820191906000526020600020905b81548152906001019060200180831161044957829003601f168201915b505050505081565b600080600381111561047c57fe5b600360149054906101000a900460ff16600381111561049757fe5b1461050a576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252600d8152602001807f496e76616c69642073746174650000000000000000000000000000000000000081525060200191505060405180910390fd5b6105126108f9565b15610568576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526028815260200180610c426028913960400191505060405180910390fd5b600560009054906101000a900460ff166105a5576001600360146101000a81548160ff0219169083600381111561059b57fe5b02179055506105ca565b6002600360146101000a81548160ff021916908360038111156105c457fe5b02179055505b7f0b9078f334a74265611ffdedf039a9fbcb08c18bd57687f7d260fbe104ceff9d30600654600560009054906101000a900460ff16604051808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200183815260200182151515158152602001935050505060405180910390a150565b8060078190555050565b600360009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600180600381111561069357fe5b600360149054906101000a900460ff1660038111156106ae57fe5b14610721576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252600d8152602001807f496e76616c69642073746174650000000000000000000000000000000000000081525060200191505060405180910390fd5b6000600460003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002054116107d6576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260178152602001807f4e6f7468696e672077617320636f6e747269627574656400000000000000000081525060200191505060405180910390fd5b6000600460003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205490506000600460003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020819055503373ffffffffffffffffffffffffffffffffffffffff166108fc829081150290604051600060405180830381858888f193505050506108dd5780600460003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020819055505b5050565b60046020528060005260406000206000915090505481565b6000600254610906610c14565b10905090565b60025481565b600560009054906101000a900460ff1681565b60015481565b600360149054906101000a900460ff1681565b600080600381111561094c57fe5b600360149054906101000a900460ff16600381111561096757fe5b146109da576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252600d8152602001807f496e76616c69642073746174650000000000000000000000000000000000000081525060200191505060405180910390fd5b6109e26108f9565b610a37576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526023815260200180610c1f6023913960400191505060405180910390fd5b34600460003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825401925050819055503460066000828254019250508190555060015460065410610abb576001600560006101000a81548160ff0219169083151502179055505b50565b60065481565b6002806003811115610ad257fe5b600360149054906101000a900460ff166003811115610aed57fe5b14610b60576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252600d8152602001807f496e76616c69642073746174650000000000000000000000000000000000000081525060200191505060405180910390fd5b6000600360009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1690508073ffffffffffffffffffffffffffffffffffffffff166108fc6006549081150290604051600060405180830381858888f1935050505015610beb5760038060146101000a81548160ff02191690836003811115610be157fe5b0217905550610c10565b6001600360146101000a81548160ff02191690836003811115610c0a57fe5b02179055505b5050565b600060075490509056fe4e6f20636f6e747269627574696f6e732061667465722074686520646561646c696e6543616e6e6f742066696e6973682063616d706169676e206265666f7265206120646561646c696e65a26469706673582212209af01f77b37427ea80c0c11719760822f140363f270a3ea5be15e9b3a56f6b8d64736f6c63430006080033",
+  "deployedBytecode": "0x6080604052600436106100dd5760003560e01c8063796b23bb1161007f578063c19d93fb11610059578063c19d93fb1461034b578063d7bb99ba14610384578063e29eb8361461038e578063e5225381146103b9576100dd565b8063796b23bb146102c657806384bcefd4146102f1578063953b8fb814610320576100dd565b806338af3eed116100bb57806338af3eed146101c45780633ccfd60b1461021b57806355a3b2c11461023257806368bc004114610297576100dd565b806306fdde03146100e2578063083dca111461017257806322f8e56614610189575b600080fd5b3480156100ee57600080fd5b506100f76103d0565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561013757808201518184015260208101905061011c565b50505050905090810190601f1680156101645780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34801561017e57600080fd5b5061018761046e565b005b34801561019557600080fd5b506101c2600480360360208110156101ac57600080fd5b8101908080359060200190929190505050610655565b005b3480156101d057600080fd5b506101d961065f565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561022757600080fd5b50610230610685565b005b34801561023e57600080fd5b506102816004803603602081101561025557600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506108e1565b6040518082815260200191505060405180910390f35b3480156102a357600080fd5b506102ac6108f9565b604051808215151515815260200191505060405180910390f35b3480156102d257600080fd5b506102db61090c565b6040518082815260200191505060405180910390f35b3480156102fd57600080fd5b50610306610912565b604051808215151515815260200191505060405180910390f35b34801561032c57600080fd5b50610335610925565b6040518082815260200191505060405180910390f35b34801561035757600080fd5b5061036061092b565b6040518082600381111561037057fe5b60ff16815260200191505060405180910390f35b61038c61093e565b005b34801561039a57600080fd5b506103a3610abe565b6040518082815260200191505060405180910390f35b3480156103c557600080fd5b506103ce610ac4565b005b60008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156104665780601f1061043b57610100808354040283529160200191610466565b820191906000526020600020905b81548152906001019060200180831161044957829003601f168201915b505050505081565b600080600381111561047c57fe5b600360149054906101000a900460ff16600381111561049757fe5b1461050a576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252600d8152602001807f496e76616c69642073746174650000000000000000000000000000000000000081525060200191505060405180910390fd5b6105126108f9565b15610568576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526028815260200180610c426028913960400191505060405180910390fd5b600560009054906101000a900460ff166105a5576001600360146101000a81548160ff0219169083600381111561059b57fe5b02179055506105ca565b6002600360146101000a81548160ff021916908360038111156105c457fe5b02179055505b7f0b9078f334a74265611ffdedf039a9fbcb08c18bd57687f7d260fbe104ceff9d30600654600560009054906101000a900460ff16604051808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200183815260200182151515158152602001935050505060405180910390a150565b8060078190555050565b600360009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600180600381111561069357fe5b600360149054906101000a900460ff1660038111156106ae57fe5b14610721576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252600d8152602001807f496e76616c69642073746174650000000000000000000000000000000000000081525060200191505060405180910390fd5b6000600460003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002054116107d6576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260178152602001807f4e6f7468696e672077617320636f6e747269627574656400000000000000000081525060200191505060405180910390fd5b6000600460003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205490506000600460003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020819055503373ffffffffffffffffffffffffffffffffffffffff166108fc829081150290604051600060405180830381858888f193505050506108dd5780600460003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020819055505b5050565b60046020528060005260406000206000915090505481565b6000600254610906610c14565b10905090565b60025481565b600560009054906101000a900460ff1681565b60015481565b600360149054906101000a900460ff1681565b600080600381111561094c57fe5b600360149054906101000a900460ff16600381111561096757fe5b146109da576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252600d8152602001807f496e76616c69642073746174650000000000000000000000000000000000000081525060200191505060405180910390fd5b6109e26108f9565b610a37576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526023815260200180610c1f6023913960400191505060405180910390fd5b34600460003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825401925050819055503460066000828254019250508190555060015460065410610abb576001600560006101000a81548160ff0219169083151502179055505b50565b60065481565b6002806003811115610ad257fe5b600360149054906101000a900460ff166003811115610aed57fe5b14610b60576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252600d8152602001807f496e76616c69642073746174650000000000000000000000000000000000000081525060200191505060405180910390fd5b6000600360009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1690508073ffffffffffffffffffffffffffffffffffffffff166108fc6006549081150290604051600060405180830381858888f1935050505015610beb5760038060146101000a81548160ff02191690836003811115610be157fe5b0217905550610c10565b6001600360146101000a81548160ff02191690836003811115610c0a57fe5b02179055505b5050565b600060075490509056fe4e6f20636f6e747269627574696f6e732061667465722074686520646561646c696e6543616e6e6f742066696e6973682063616d706169676e206265666f7265206120646561646c696e65a26469706673582212209af01f77b37427ea80c0c11719760822f140363f270a3ea5be15e9b3a56f6b8d64736f6c63430006080033",
+  "immutableReferences": {},
+  "sourceMap": "75:548:2:-:0;;;163:274;5:9:-1;2:2;;;27:1;24;17:12;2:2;163:274:2;;;;;;;;;;;;;;;15:3:-1;10;7:12;4:2;;;32:1;29;22:12;4:2;163:274:2;;;;;;;;;;;;;19:11:-1;14:3;11:20;8:2;;;44:1;41;34:12;8:2;71:11;66:3;62:21;55:28;;123:4;118:3;114:14;159:9;141:16;138:31;135:2;;;182:1;179;172:12;135:2;219:3;213:10;330:9;325:1;311:12;307:20;289:16;285:43;282:58;261:11;247:12;244:29;233:115;230:2;;;361:1;358;351:12;230:2;384:12;379:3;372:25;420:4;415:3;411:14;404:21;;0:432;;163:274:2;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;163:274:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;344:12;358:15;375:13;390:18;865:12:0;858:4;:19;;;;;;;;;;;;:::i;:::-;;902:5;:16;919:15;902:33;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;5:9:-1;2:2;;;27:1;24;17:12;2:2;902:33:0;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;902:33:0;;;;;;;15:2:-1;10:3;7:11;4:2;;;31:1;28;21:12;4:2;902:33:0;;;;;;;;;;;;;;;;887:12;:48;;;;979:5;:22;1002:13;979:37;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;5:9:-1;2:2;;;27:1;24;17:12;2:2;979:37:0;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;979:37:0;;;;;;;15:2:-1;10:3;7:11;4:2;;;31:1;28;21:12;4:2;979:37:0;;;;;;;;;;;;;;;;963:13;:11;;;:13;;:::i;:::-;:53;945:15;:71;;;;1040:18;1026:11;;:32;;;;;;;;;;;;;;;;;;1076:13;1068:5;;:21;;;;;;;;;;;;;;;;;;;;;;;;692:404;;;;163:274:2;;;;75:548;;443:96;505:4;528;;521:11;;443:96;:::o;75:548::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;",
+  "deployedSourceMap": "75:548:2:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;12:1:-1;9;2:12;324:18:0;;5:9:-1;2:2;;;27:1;24;17:12;2:2;324:18:0;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;324:18:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1632:347;;5:9:-1;2:2;;;27:1;24;17:12;2:2;1632:347:0;;;:::i;:::-;;545:76:2;;5:9:-1;2:2;;;27:1;24;17:12;2:2;545:76:2;;;;;;15:2:-1;10:3;7:11;4:2;;;31:1;28;21:12;4:2;545:76:2;;;;;;;;;;;;;;;;;:::i;:::-;;411:26:0;;5:9:-1;2:2;;;27:1;24;17:12;2:2;411:26:0;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;2358:309;;5:9:-1;2:2;;;27:1;24;17:12;2:2;2358:309:0;;;:::i;:::-;;467:39;;5:9:-1;2:2;;;27:1;24;17:12;2:2;467:39:0;;;;;;15:2:-1;10:3;7:11;4:2;;;31:1;28;21:12;4:2;467:39:0;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1519:107;;5:9:-1;2:2;;;27:1;24;17:12;2:2;1519:107:0;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;378:27;;5:9:-1;2:2;;;27:1;24;17:12;2:2;378:27:0;;;:::i;:::-;;;;;;;;;;;;;;;;;;;512:21;;5:9:-1;2:2;;;27:1;24;17:12;2:2;512:21:0;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;348:24;;5:9:-1;2:2;;;27:1;24;17:12;2:2;348:24:0;;;:::i;:::-;;;;;;;;;;;;;;;;;;;443:18;;5:9:-1;2:2;;;27:1;24;17:12;2:2;443:18:0;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1102:307;;;:::i;:::-;;539:26;;5:9:-1;2:2;;;27:1;24;17:12;2:2;539:26:0;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1985:367;;5:9:-1;2:2;;;27:1;24;17:12;2:2;1985:367:0;;;:::i;:::-;;324:18;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;1632:347::-;1677:13;637;628:22;;;;;;;;:5;;;;;;;;;;;:22;;;;;;;;;620:48;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1711:16:::1;:14;:16::i;:::-;1710:17;1702:70;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1788:9;;;;;;;;;;;1783:115;;1821:12;1813:5;;:20;;;;;;;;;;;;;;;;;;;;;;;;1783:115;;;1872:15;1864:5;;:23;;;;;;;;;;;;;;;;;;;;;;;;1783:115;1913:59;1939:4;1946:14;;1962:9;;;;;;;;;;;1913:59;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1632:347:::0;:::o;545:76:2:-;607:7;600:4;:14;;;;545:76;:::o;411:26:0:-;;;;;;;;;;;;;:::o;2358:309::-;2393:12;637:13;628:22;;;;;;;;:5;;;;;;;;;;;:22;;;;;;;;;620:48;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2447:1:::1;2425:7;:19;2433:10;2425:19;;;;;;;;;;;;;;;;:23;2417:59;;;;;;;;;;;;;;;;;;;;;;;;;;;::::0;::::1;;;;;;;;;;;;;2486:16;2505:7;:19;2513:10;2505:19;;;;;;;;;;;;;;;;2486:38;;2556:1;2534:7;:19;2542:10;2534:19;;;;;;;;;;;;;;;:23;;;;2573:10;:15;;:28;2589:11;2573:28;;;;;;;;;;;;;;;;;;;;;;;2568:93;;2639:11;2617:7;:19;2625:10;2617:19;;;;;;;;;;;;;;;:33;;;;2568:93;678:1;2358:309:::0;:::o;467:39::-;;;;;;;;;;;;;;;;;:::o;1519:107::-;1565:4;1604:15;;1588:13;:11;:13::i;:::-;:31;1581:38;;1519:107;:::o;378:27::-;;;;:::o;512:21::-;;;;;;;;;;;;;:::o;348:24::-;;;;:::o;443:18::-;;;;;;;;;;;;;:::o;1102:307::-;1147:13;637;628:22;;;;;;;;:5;;;;;;;;;;;:22;;;;;;;;;620:48;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1180:16:::1;:14;:16::i;:::-;1172:64;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1269:9;1246:7;:19;1254:10;1246:19;;;;;;;;;;;;;;;;:32;;;;;;;;;;;1306:9;1288:14;;:27;;;;;;;;;;;1348:12;;1330:14;;:30;1326:77;;1388:4;1376:9;;:16;;;;;;;;;;;;;;;;;;1326:77;1102:307:::0;:::o;539:26::-;;;;:::o;1985:367::-;2019:15;637:13;628:22;;;;;;;;:5;;;;;;;;;;;:22;;;;;;;;;620:48;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2165:20:::1;2196:11;;;;;;;;;;;2165:43;;2222:4;:9;;:25;2232:14;;2222:25;;;;;;;;;;;;;;;;;;;;;;;2218:128;;;2271:13;2263:5:::0;::::1;:21;;;;;;;;;;;;;;;;;;;;;;;;2218:128;;;2323:12;2315:5;;:20;;;;;;;;;;;;;;;;;;;;;;;;2218:128;678:1;1985:367:::0;:::o;443:96:2:-;505:4;528;;521:11;;443:96;:::o",
+  "source": "pragma solidity >=0.6.0 <0.7.0;\n\nimport \"./CrowdFundingWithDeadline.sol\";\n\ncontract TestCrowdFundingWithDeadline is CrowdFundingWithDeadline {\n    uint time;\n\n    constructor(\n        string memory contractName,\n        uint targetAmountEth,\n        uint durationInMin,\n        address beneficiaryAddress\n    )\n        CrowdFundingWithDeadline(contractName, targetAmountEth, durationInMin, beneficiaryAddress)\n        public\n    {\n\n    }\n\n    function currentTime() internal override virtual view returns(uint) {\n        return time;\n    }\n\n    function setCurrentTime(uint newTime) public {\n        time = newTime;\n    }\n}",
+  "sourcePath": "/home/eduardo/Documentos/Projects/Ethereum/Solidity_course/crowdfunding/contracts/TestCrowdFundingWithDeadline.sol",
+  "ast": {
+    "absolutePath": "/home/eduardo/Documentos/Projects/Ethereum/Solidity_course/crowdfunding/contracts/TestCrowdFundingWithDeadline.sol",
+    "exportedSymbols": {
+      "TestCrowdFundingWithDeadline": [
+        347
+      ]
+    },
+    "id": 348,
+    "license": null,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 304,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.6",
+          ".0",
+          "<",
+          "0.7",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:31:2"
+      },
+      {
+        "absolutePath": "/home/eduardo/Documentos/Projects/Ethereum/Solidity_course/crowdfunding/contracts/CrowdFundingWithDeadline.sol",
+        "file": "./CrowdFundingWithDeadline.sol",
+        "id": 305,
+        "nodeType": "ImportDirective",
+        "scope": 348,
+        "sourceUnit": 266,
+        "src": "33:40:2",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 306,
+              "name": "CrowdFundingWithDeadline",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 265,
+              "src": "116:24:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_CrowdFundingWithDeadline_$265",
+                "typeString": "contract CrowdFundingWithDeadline"
+              }
+            },
+            "id": 307,
+            "nodeType": "InheritanceSpecifier",
+            "src": "116:24:2"
+          }
+        ],
+        "contractDependencies": [
+          265
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 347,
+        "linearizedBaseContracts": [
+          347,
+          265
+        ],
+        "name": "TestCrowdFundingWithDeadline",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 309,
+            "mutability": "mutable",
+            "name": "time",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 347,
+            "src": "147:9:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 308,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "147:4:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 326,
+              "nodeType": "Block",
+              "src": "429:8:2",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 327,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "id": 320,
+                    "name": "contractName",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 311,
+                    "src": "344:12:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_memory_ptr",
+                      "typeString": "string memory"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 321,
+                    "name": "targetAmountEth",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 313,
+                    "src": "358:15:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 322,
+                    "name": "durationInMin",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 315,
+                    "src": "375:13:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 323,
+                    "name": "beneficiaryAddress",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 317,
+                    "src": "390:18:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  }
+                ],
+                "id": 324,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 319,
+                  "name": "CrowdFundingWithDeadline",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 265,
+                  "src": "319:24:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_type$_t_contract$_CrowdFundingWithDeadline_$265_$",
+                    "typeString": "type(contract CrowdFundingWithDeadline)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "319:90:2"
+              }
+            ],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 318,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 311,
+                  "mutability": "mutable",
+                  "name": "contractName",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 327,
+                  "src": "184:26:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 310,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "184:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 313,
+                  "mutability": "mutable",
+                  "name": "targetAmountEth",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 327,
+                  "src": "220:20:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 312,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "220:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 315,
+                  "mutability": "mutable",
+                  "name": "durationInMin",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 327,
+                  "src": "250:18:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 314,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "250:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 317,
+                  "mutability": "mutable",
+                  "name": "beneficiaryAddress",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 327,
+                  "src": "278:26:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 316,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "278:7:2",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "174:136:2"
+            },
+            "returnParameters": {
+              "id": 325,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "429:0:2"
+            },
+            "scope": 347,
+            "src": "163:274:2",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "baseFunctions": [
+              135
+            ],
+            "body": {
+              "id": 335,
+              "nodeType": "Block",
+              "src": "511:28:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 333,
+                    "name": "time",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 309,
+                    "src": "528:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 332,
+                  "id": 334,
+                  "nodeType": "Return",
+                  "src": "521:11:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 336,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "currentTime",
+            "nodeType": "FunctionDefinition",
+            "overrides": {
+              "id": 329,
+              "nodeType": "OverrideSpecifier",
+              "overrides": [],
+              "src": "475:8:2"
+            },
+            "parameters": {
+              "id": 328,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "463:2:2"
+            },
+            "returnParameters": {
+              "id": 332,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 331,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 336,
+                  "src": "505:4:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 330,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "505:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "504:6:2"
+            },
+            "scope": 347,
+            "src": "443:96:2",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 345,
+              "nodeType": "Block",
+              "src": "590:31:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 343,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 341,
+                      "name": "time",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 309,
+                      "src": "600:4:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 342,
+                      "name": "newTime",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 338,
+                      "src": "607:7:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "600:14:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 344,
+                  "nodeType": "ExpressionStatement",
+                  "src": "600:14:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "functionSelector": "22f8e566",
+            "id": 346,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setCurrentTime",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 339,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 338,
+                  "mutability": "mutable",
+                  "name": "newTime",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 346,
+                  "src": "569:12:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 337,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "569:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "568:14:2"
+            },
+            "returnParameters": {
+              "id": 340,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "590:0:2"
+            },
+            "scope": 347,
+            "src": "545:76:2",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 348,
+        "src": "75:548:2"
+      }
+    ],
+    "src": "0:623:2"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/eduardo/Documentos/Projects/Ethereum/Solidity_course/crowdfunding/contracts/TestCrowdFundingWithDeadline.sol",
+    "exportedSymbols": {
+      "TestCrowdFundingWithDeadline": [
+        347
+      ]
+    },
+    "id": 348,
+    "license": null,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 304,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.6",
+          ".0",
+          "<",
+          "0.7",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:31:2"
+      },
+      {
+        "absolutePath": "/home/eduardo/Documentos/Projects/Ethereum/Solidity_course/crowdfunding/contracts/CrowdFundingWithDeadline.sol",
+        "file": "./CrowdFundingWithDeadline.sol",
+        "id": 305,
+        "nodeType": "ImportDirective",
+        "scope": 348,
+        "sourceUnit": 266,
+        "src": "33:40:2",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 306,
+              "name": "CrowdFundingWithDeadline",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 265,
+              "src": "116:24:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_CrowdFundingWithDeadline_$265",
+                "typeString": "contract CrowdFundingWithDeadline"
+              }
+            },
+            "id": 307,
+            "nodeType": "InheritanceSpecifier",
+            "src": "116:24:2"
+          }
+        ],
+        "contractDependencies": [
+          265
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 347,
+        "linearizedBaseContracts": [
+          347,
+          265
+        ],
+        "name": "TestCrowdFundingWithDeadline",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 309,
+            "mutability": "mutable",
+            "name": "time",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 347,
+            "src": "147:9:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 308,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "147:4:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 326,
+              "nodeType": "Block",
+              "src": "429:8:2",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 327,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "id": 320,
+                    "name": "contractName",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 311,
+                    "src": "344:12:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_memory_ptr",
+                      "typeString": "string memory"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 321,
+                    "name": "targetAmountEth",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 313,
+                    "src": "358:15:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 322,
+                    "name": "durationInMin",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 315,
+                    "src": "375:13:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 323,
+                    "name": "beneficiaryAddress",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 317,
+                    "src": "390:18:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  }
+                ],
+                "id": 324,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 319,
+                  "name": "CrowdFundingWithDeadline",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 265,
+                  "src": "319:24:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_type$_t_contract$_CrowdFundingWithDeadline_$265_$",
+                    "typeString": "type(contract CrowdFundingWithDeadline)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "319:90:2"
+              }
+            ],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 318,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 311,
+                  "mutability": "mutable",
+                  "name": "contractName",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 327,
+                  "src": "184:26:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 310,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "184:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 313,
+                  "mutability": "mutable",
+                  "name": "targetAmountEth",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 327,
+                  "src": "220:20:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 312,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "220:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 315,
+                  "mutability": "mutable",
+                  "name": "durationInMin",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 327,
+                  "src": "250:18:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 314,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "250:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 317,
+                  "mutability": "mutable",
+                  "name": "beneficiaryAddress",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 327,
+                  "src": "278:26:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 316,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "278:7:2",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "174:136:2"
+            },
+            "returnParameters": {
+              "id": 325,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "429:0:2"
+            },
+            "scope": 347,
+            "src": "163:274:2",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "baseFunctions": [
+              135
+            ],
+            "body": {
+              "id": 335,
+              "nodeType": "Block",
+              "src": "511:28:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 333,
+                    "name": "time",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 309,
+                    "src": "528:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 332,
+                  "id": 334,
+                  "nodeType": "Return",
+                  "src": "521:11:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 336,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "currentTime",
+            "nodeType": "FunctionDefinition",
+            "overrides": {
+              "id": 329,
+              "nodeType": "OverrideSpecifier",
+              "overrides": [],
+              "src": "475:8:2"
+            },
+            "parameters": {
+              "id": 328,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "463:2:2"
+            },
+            "returnParameters": {
+              "id": 332,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 331,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 336,
+                  "src": "505:4:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 330,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "505:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "504:6:2"
+            },
+            "scope": 347,
+            "src": "443:96:2",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 345,
+              "nodeType": "Block",
+              "src": "590:31:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 343,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 341,
+                      "name": "time",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 309,
+                      "src": "600:4:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 342,
+                      "name": "newTime",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 338,
+                      "src": "607:7:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "600:14:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 344,
+                  "nodeType": "ExpressionStatement",
+                  "src": "600:14:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "functionSelector": "22f8e566",
+            "id": 346,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setCurrentTime",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 339,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 338,
+                  "mutability": "mutable",
+                  "name": "newTime",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 346,
+                  "src": "569:12:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 337,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "569:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "568:14:2"
+            },
+            "returnParameters": {
+              "id": 340,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "590:0:2"
+            },
+            "scope": 347,
+            "src": "545:76:2",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 348,
+        "src": "75:548:2"
+      }
+    ],
+    "src": "0:623:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.6.8+commit.0bbfe453.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {
+        "0x0b9078f334a74265611ffdedf039a9fbcb08c18bd57687f7d260fbe104ceff9d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "totalCollected",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "bool",
+              "name": "succeeded",
+              "type": "bool"
+            }
+          ],
+          "name": "CampaignFinnished",
+          "type": "event"
+        }
+      },
+      "links": {
+        "Utils": "0xD20EDbf21976D823b5036816DeA1Ac8f1643F0eB"
+      }
+    }
+  },
+  "schemaVersion": "3.1.0",
+  "updatedAt": "2020-05-23T02:23:40.821Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
